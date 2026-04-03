@@ -32,14 +32,20 @@
 		"**/node_modules": false
 	},
 
+	// languages
 	"typescript.preferences.useAliasesForRenames": false,
 	"typescript.updateImportsOnFileMove.enabled": "always",
 	"typescript.autoClosingTags": false,
 	"javascript.updateImportsOnFileMove.enabled": "always",
+	"javascript.autoClosingTags": false,
 	"[mdx]": {
 		"editor.defaultFormatter": "vscode.typescript-language-features"
 	},
+	"[markdown]": {
+		"editor.defaultFormatter": "yzhang.markdown-all-in-one"
+	},
 
+	// extensions
 	"liveServer.settings.donotShowInfoMsg": true,
 	"diffEditor.ignoreTrimWhitespace": true,
 	"todohighlight.keywords": [
