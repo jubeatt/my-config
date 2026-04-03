@@ -1,0 +1,110 @@
+{
+	"workbench.panel.defaultLocation": "bottom",
+	"workbench.iconTheme": "material-icon-theme",
+	"workbench.colorCustomizations": {
+		"statusBar.background": "#1A1A1A",
+		"statusBar.noFolderBackground": "#212121",
+		"statusBar.debuggingBackground": "#263238"
+	},
+
+	"workbench.colorTheme": "Winter is Coming (Dark Blue - No Italics)",
+	"workbench.editor.empty.hint": "hidden",
+
+	"terminal.integrated.fontSize": 14,
+	"terminal.integrated.suggest.enabled": false,
+	"terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', Monaco, 'Courier New', monospace",
+
+	"editor.fontSize": 14,
+	"editor.cursorSmoothCaretAnimation": "on",
+	"editor.fontFamily": "'JetBrainsMono Nerd Font', Monaco, 'Courier New', monospace",
+	"editor.tabSize": 2,
+	"editor.fontLigatures": true,
+	"editor.defaultFormatter": "biomejs.biome",
+	"editor.formatOnSave": true,
+	"editor.letterSpacing": 1,
+	"editor.suggest.showStatusBar": true,
+	"editor.minimap.enabled": true,
+
+	"explorer.compactFolders": false,
+	"explorer.fileNesting.enabled": false,
+	"explorer.confirmDelete": false,
+	"explorer.autoRevealExclude": {
+		"**/node_modules": false
+	},
+
+	"typescript.preferences.useAliasesForRenames": false,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"typescript.autoClosingTags": false,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"[mdx]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
+
+	"liveServer.settings.donotShowInfoMsg": true,
+	"diffEditor.ignoreTrimWhitespace": true,
+	"todohighlight.keywords": [
+		{
+			"text": "TODO:",
+			"color": "white",
+			"backgroundColor": "#10B981"
+		},
+		{
+			"text": "NOTE:",
+			"backgroundColor": "#0065F8",
+			"color": "white"
+		},
+		{
+			"text": "HELPME:",
+			"color": "white",
+			"backgroundColor": "#0065F8"
+		},
+		{
+			"text": "WARNING:",
+			"color": "white",
+			"backgroundColor": "#F564A9"
+		},
+		{
+			"text": "HACK:",
+			"color": "white",
+			"backgroundColor": "#F564A9"
+		},
+		{
+			"text": "FIXME:",
+			"color": "white",
+			"backgroundColor": "#F564A9"
+		}
+	],
+	"todohighlight.include": [
+		"**/*.js",
+		"**/*.jsx",
+		"**/*.ts",
+		"**/*.tsx",
+		"**/*.html",
+		"**/*.php",
+		"**/*.css",
+		"**/*.scss",
+		"**/*.vue"
+	],
+	"security.workspace.trust.untrustedFiles": "open",
+	"gitlens.rebaseEditor.openOnPausedRebase": false,
+
+	// kiro ONLY
+	"kiroAgent.enableTabAutocomplete": false,
+	"kiroAgent.agentAutonomy": "Autopilot",
+	"kiroAgent.modelSelection": "claude-opus-4.6",
+	"kiroAgent.trustedCommands": [
+		"git *",
+		"pnpm *",
+		"npx *",
+		"find *",
+		"grep *",
+		"sed *",
+		"head *",
+		"wc *",
+		"python3 *",
+		"cp *",
+		"cat *",
+		"ls *"
+	],
+	"kiroAgent.trustedTools": ["webFetch", "remote_web_search"]
+}
