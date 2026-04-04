@@ -80,7 +80,6 @@
 			"backgroundColor": "#F564A9"
 		}
 	],
-	"security.workspace.trust.untrustedFiles": "open",
 	"gitlens.rebaseEditor.openOnPausedRebase": false,
 
 	// kiro ONLY
