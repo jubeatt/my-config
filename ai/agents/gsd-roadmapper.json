@@ -1,0 +1,18 @@
+{
+  "name": "gsd-roadmapper",
+  "description": "Creates project roadmaps with phase breakdown, requirement mapping, success criteria derivation, and coverage validation. Spawned by /gsd-new-project orchestrator.",
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "@builtin",
+    "@git"
+  ],
+  "resources": [
+    "file://.kiro/steering/*.md",
+    "skill://.kiro/skills/**/SKILL.md",
+    "skill:///Users/peanu/.kiro/skills/**/SKILL.md"
+  ],
+  "includeMcpJson": true,
+  "prompt": "file:///Users/peanu/.kiro/agents/gsd-roadmapper.md"
+}

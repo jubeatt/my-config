@@ -1,0 +1,18 @@
+{
+  "name": "gsd-planner",
+  "description": "Creates executable phase plans with task breakdown, dependency analysis, and goal-backward verification. Spawned by /gsd-plan-phase orchestrator.",
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "@builtin",
+    "@git"
+  ],
+  "resources": [
+    "file://.kiro/steering/*.md",
+    "skill://.kiro/skills/**/SKILL.md",
+    "skill:///Users/peanu/.kiro/skills/**/SKILL.md"
+  ],
+  "includeMcpJson": true,
+  "prompt": "file:///Users/peanu/.kiro/agents/gsd-planner.md"
+}

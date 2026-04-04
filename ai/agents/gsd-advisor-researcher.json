@@ -1,0 +1,21 @@
+{
+  "name": "gsd-advisor-researcher",
+  "description": "Researches a single gray area decision and returns a structured comparison table with rationale. Spawned by discuss-phase advisor mode.",
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "@builtin",
+    "@git",
+    "@context7",
+    "@exa",
+    "@github-grep"
+  ],
+  "resources": [
+    "file://.kiro/steering/*.md",
+    "skill://.kiro/skills/**/SKILL.md",
+    "skill:///Users/peanu/.kiro/skills/**/SKILL.md"
+  ],
+  "includeMcpJson": true,
+  "prompt": "file:///Users/peanu/.kiro/agents/gsd-advisor-researcher.md"
+}

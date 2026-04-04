@@ -1,0 +1,18 @@
+{
+  "name": "gsd-nyquist-auditor",
+  "description": "Fills Nyquist validation gaps by generating tests and verifying coverage for phase requirements",
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "@builtin",
+    "@git"
+  ],
+  "resources": [
+    "file://.kiro/steering/*.md",
+    "skill://.kiro/skills/**/SKILL.md",
+    "skill:///Users/peanu/.kiro/skills/**/SKILL.md"
+  ],
+  "includeMcpJson": true,
+  "prompt": "file:///Users/peanu/.kiro/agents/gsd-nyquist-auditor.md"
+}

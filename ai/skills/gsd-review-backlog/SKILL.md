@@ -1,0 +1,84 @@
+---
+name: gsd-review-backlog
+description: "Review and promote backlog items to active milestone"
+---
+
+<kiro_skill_adapter>
+## A. Skill Invocation
+- This skill is invoked when the user mentions `gsd-review-backlog` or describes a task matching this skill.
+- Treat all user text after the skill mention as `{{GSD_ARGS}}`.
+- If no arguments are present, treat `{{GSD_ARGS}}` as empty.
+
+## B. User Prompting
+When the workflow needs user input, prompt the user conversationally:
+- Present options as a numbered list in your response text
+- Ask the user to reply with their choice
+- For multi-select, ask for comma-separated numbers
+
+## C. Tool Usage
+Use these Kiro tools when executing GSD workflows:
+- `execute_bash` for running commands (terminal operations)
+- `fs_write` with str_replace for editing existing files
+- `fs_read`, `fs_write`, `glob`, `grep`, `use_subagent`, `web_search`, `web_fetch`, `todo_list` as needed
+
+## D. Subagent Spawning
+When the workflow needs to spawn a subagent, use the `use_subagent` tool:
+- Set `agent_name` to the GSD agent (e.g., "gsd-executor", "gsd-planner", "gsd-verifier")
+- Set `query` to the full task description including file paths to read
+- Set `relevant_context` for additional context
+- Up to 4 subagents can run in parallel for independent tasks
+- Do NOT include `model` or `isolation` parameters — Kiro handles these automatically
+</kiro_skill_adapter>
+
+<objective>
+Review all 999.x backlog items and optionally promote them into the active
+milestone sequence or remove stale entries.
+</objective>
+
+<process>
+
+1. **List backlog items:**
+   ```bash
+   ls -d .planning/phases/999* 2>/dev/null || echo "No backlog items found"
+   ```
+
+2. **Read ROADMAP.md** and extract all 999.x phase entries:
+   ```bash
+   cat .planning/ROADMAP.md
+   ```
+   Show each backlog item with its description, any accumulated context (CONTEXT.md, RESEARCH.md), and creation date.
+
+3. **Present the list to the user** via conversational prompting:
+   - For each backlog item, show: phase number, description, accumulated artifacts
+   - Options per item: **Promote** (move to active), **Keep** (leave in backlog), **Remove** (delete)
+
+4. **For items to PROMOTE:**
+   - Find the next sequential phase number in the active milestone
+   - Rename the directory from `999.x-slug` to `{new_num}-slug`:
+     ```bash
+     NEW_NUM=$(node "$HOME/.kiro/get-shit-done/bin/gsd-tools.cjs" phase add "${DESCRIPTION}" --raw)
+     ```
+   - Move accumulated artifacts to the new phase directory
+   - Update ROADMAP.md: move the entry from `## Backlog` section to the active phase list
+   - Remove `(BACKLOG)` marker
+   - Add appropriate `**Depends on:**` field
+
+5. **For items to REMOVE:**
+   - Delete the phase directory
+   - Remove the entry from ROADMAP.md `## Backlog` section
+
+6. **Commit changes:**
+   ```bash
+   node "$HOME/.kiro/get-shit-done/bin/gsd-tools.cjs" commit "docs: review backlog — promoted N, removed M" --files .planning/ROADMAP.md
+   ```
+
+7. **Report summary:**
+   ```
+   ## 📋 Backlog Review Complete
+
+   Promoted: {list of promoted items with new phase numbers}
+   Kept: {list of items remaining in backlog}
+   Removed: {list of deleted items}
+   ```
+
+</process>

@@ -1,0 +1,18 @@
+{
+  "name": "gsd-plan-checker",
+  "description": "Verifies plans will achieve phase goal before execution. Goal-backward analysis of plan quality. Spawned by /gsd-plan-phase orchestrator.",
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "@builtin",
+    "@git"
+  ],
+  "resources": [
+    "file://.kiro/steering/*.md",
+    "skill://.kiro/skills/**/SKILL.md",
+    "skill:///Users/peanu/.kiro/skills/**/SKILL.md"
+  ],
+  "includeMcpJson": true,
+  "prompt": "file:///Users/peanu/.kiro/agents/gsd-plan-checker.md"
+}
