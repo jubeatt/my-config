@@ -1,28 +1,21 @@
 {
-  "name": "gsd-orchestrator",
-  "description": "GSD orchestrator — run spec-driven development workflows. Mention any gsd skill (e.g. gsd-new-project, gsd-execute-phase) to start.",
-  "tools": [
-    "*"
-  ],
-  "allowedTools": [
-    "@builtin",
-    "@git"
-  ],
-  "resources": [
-    "file://.kiro/steering/*.md",
-    "skill://.kiro/skills/**/SKILL.md",
-    "skill:///Users/peanu/.kiro/skills/**/SKILL.md"
-  ],
-  "includeMcpJson": true,
-  "toolsSettings": {
-    "subagent": {
-      "availableAgents": [
-        "gsd-*"
-      ],
-      "trustedAgents": [
-        "gsd-*"
-      ]
-    }
-  },
-  "prompt": "file:///Users/peanu/.kiro/agents/gsd-orchestrator.md"
+	"name": "gsd-orchestrator",
+	"description": "GSD orchestrator — run spec-driven development workflows. Mention any gsd skill (e.g. gsd-new-project, gsd-execute-phase) to start.",
+	"tools": ["*"],
+	"allowedTools": ["@builtin", "@git"],
+	"resources": [
+		"file:///Users/peanu/.kiro/steering/*.md",
+		"file:///Users/peanu/.kiro/skills/**/SKILL.md",
+
+		"file://.kiro/steering/*.md",
+		"skill://.kiro/skills/*/SKILL.md"
+	],
+	"includeMcpJson": true,
+	"toolsSettings": {
+		"subagent": {
+			"availableAgents": ["gsd-*"],
+			"trustedAgents": ["gsd-*"]
+		}
+	},
+	"prompt": "file:///Users/peanu/.kiro/agents/gsd-orchestrator.md"
 }

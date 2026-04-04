@@ -1,18 +1,15 @@
 {
-  "name": "gsd-assumptions-analyzer",
-  "description": "Deeply analyzes codebase for a phase and returns structured assumptions with evidence. Spawned by discuss-phase assumptions mode.",
-  "tools": [
-    "*"
-  ],
-  "allowedTools": [
-    "@builtin",
-    "@git"
-  ],
-  "resources": [
-    "file://.kiro/steering/*.md",
-    "skill://.kiro/skills/**/SKILL.md",
-    "skill:///Users/peanu/.kiro/skills/**/SKILL.md"
-  ],
-  "includeMcpJson": true,
-  "prompt": "file:///Users/peanu/.kiro/agents/gsd-assumptions-analyzer.md"
+	"name": "gsd-assumptions-analyzer",
+	"description": "Deeply analyzes codebase for a phase and returns structured assumptions with evidence. Spawned by discuss-phase assumptions mode.",
+	"tools": ["*"],
+	"allowedTools": ["@builtin", "@git"],
+	"resources": [
+		"file:///Users/peanu/.kiro/steering/*.md",
+		"file:///Users/peanu/.kiro/skills/**/SKILL.md",
+
+		"file://.kiro/steering/*.md",
+		"skill://.kiro/skills/*/SKILL.md"
+	],
+	"includeMcpJson": true,
+	"prompt": "file:///Users/peanu/.kiro/agents/gsd-assumptions-analyzer.md"
 }

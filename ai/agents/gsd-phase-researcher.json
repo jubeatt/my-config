@@ -1,21 +1,15 @@
 {
-  "name": "gsd-phase-researcher",
-  "description": "Researches how to implement a phase before planning. Produces RESEARCH.md consumed by gsd-planner. Spawned by /gsd-plan-phase orchestrator.",
-  "tools": [
-    "*"
-  ],
-  "allowedTools": [
-    "@builtin",
-    "@git",
-    "@context7",
-    "@exa",
-    "@github-grep"
-  ],
-  "resources": [
-    "file://.kiro/steering/*.md",
-    "skill://.kiro/skills/**/SKILL.md",
-    "skill:///Users/peanu/.kiro/skills/**/SKILL.md"
-  ],
-  "includeMcpJson": true,
-  "prompt": "file:///Users/peanu/.kiro/agents/gsd-phase-researcher.md"
+	"name": "gsd-phase-researcher",
+	"description": "Researches how to implement a phase before planning. Produces RESEARCH.md consumed by gsd-planner. Spawned by /gsd-plan-phase orchestrator.",
+	"tools": ["*"],
+	"allowedTools": ["@builtin", "@git", "@context7", "@exa", "@github-grep"],
+	"resources": [
+		"file:///Users/peanu/.kiro/steering/*.md",
+		"file:///Users/peanu/.kiro/skills/**/SKILL.md",
+
+		"file://.kiro/steering/*.md",
+		"skill://.kiro/skills/*/SKILL.md"
+	],
+	"includeMcpJson": true,
+	"prompt": "file:///Users/peanu/.kiro/agents/gsd-phase-researcher.md"
 }

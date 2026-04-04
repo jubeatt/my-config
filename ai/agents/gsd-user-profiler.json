@@ -1,18 +1,15 @@
 {
-  "name": "gsd-user-profiler",
-  "description": "Analyzes extracted session messages across 8 behavioral dimensions to produce a scored developer profile with confidence levels and evidence. Spawned by profile orchestration workflows.",
-  "tools": [
-    "*"
-  ],
-  "allowedTools": [
-    "@builtin",
-    "@git"
-  ],
-  "resources": [
-    "file://.kiro/steering/*.md",
-    "skill://.kiro/skills/**/SKILL.md",
-    "skill:///Users/peanu/.kiro/skills/**/SKILL.md"
-  ],
-  "includeMcpJson": true,
-  "prompt": "file:///Users/peanu/.kiro/agents/gsd-user-profiler.md"
+	"name": "gsd-user-profiler",
+	"description": "Analyzes extracted session messages across 8 behavioral dimensions to produce a scored developer profile with confidence levels and evidence. Spawned by profile orchestration workflows.",
+	"tools": ["*"],
+	"allowedTools": ["@builtin", "@git"],
+	"resources": [
+		"file:///Users/peanu/.kiro/steering/*.md",
+		"file:///Users/peanu/.kiro/skills/**/SKILL.md",
+
+		"file://.kiro/steering/*.md",
+		"skill://.kiro/skills/*/SKILL.md"
+	],
+	"includeMcpJson": true,
+	"prompt": "file:///Users/peanu/.kiro/agents/gsd-user-profiler.md"
 }
