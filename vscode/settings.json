@@ -56,40 +56,29 @@
 		},
 		{
 			"text": "NOTE:",
-			"backgroundColor": "#0065F8",
-			"color": "white"
+			"color": "white",
+			"backgroundColor": "#3B82F6"
 		},
 		{
 			"text": "HELPME:",
 			"color": "white",
-			"backgroundColor": "#0065F8"
+			"backgroundColor": "#8B5CF6"
 		},
 		{
 			"text": "WARNING:",
 			"color": "white",
-			"backgroundColor": "#F564A9"
+			"backgroundColor": "#F59E0B"
 		},
 		{
 			"text": "HACK:",
 			"color": "white",
-			"backgroundColor": "#F564A9"
+			"backgroundColor": "#EF4444"
 		},
 		{
 			"text": "FIXME:",
 			"color": "white",
 			"backgroundColor": "#F564A9"
 		}
-	],
-	"todohighlight.include": [
-		"**/*.js",
-		"**/*.jsx",
-		"**/*.ts",
-		"**/*.tsx",
-		"**/*.html",
-		"**/*.php",
-		"**/*.css",
-		"**/*.scss",
-		"**/*.vue"
 	],
 	"security.workspace.trust.untrustedFiles": "open",
 	"gitlens.rebaseEditor.openOnPausedRebase": false,
