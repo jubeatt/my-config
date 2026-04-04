@@ -21,11 +21,9 @@ cat .vscode/extensions.json | jq -r '.recommendations[]' | xargs -L 1 kiro --ins
 ```bash
 # VSCode (macOS)
 ln -sf "$(pwd)/.vscode/settings.json" "$HOME/Library/Application Support/Code/User/settings.json"
-ln -sf "$(pwd)/.vscode/extensions.json" "$HOME/Library/Application Support/Code/User/extensions.json"
 
 # Kiro (macOS)
 ln -sf "$(pwd)/.vscode/settings.json" "$HOME/Library/Application Support/Kiro/User/settings.json"
-ln -sf "$(pwd)/.vscode/extensions.json" "$HOME/Library/Application Support/Kiro/User/extensions.json"
 ```
 
 > 如果目標路徑已有檔案，`ln -sf` 會自動覆蓋。建議先備份原本的設定檔再執行。
