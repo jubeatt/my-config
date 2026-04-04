@@ -23,7 +23,11 @@
 	"editor.formatOnSave": true,
 	"editor.letterSpacing": 1,
 	"editor.suggest.showStatusBar": true,
-	"editor.minimap.enabled": true,
+	"editor.minimap.enabled": false,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports.biome": "explicit",
+		"source.removeUnusedImports": "explicit"
+	},
 
 	"explorer.compactFolders": false,
 	"explorer.fileNesting.enabled": false,
