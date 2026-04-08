@@ -2,8 +2,26 @@
 	"name": "normal",
 	"description": "General-purpose agent for answering questions, looking things up, and making small changes",
 	"model": "claude-opus-4.6",
-	"tools": ["@builtin", "*"],
+	"tools": ["@builtin", "*", "use_subagent"],
 	"allowedTools": ["@builtin", "fs_*", "execute_bash", "@context7", "@exa"],
+	"toolsSettings": {
+		"subagent": {
+			"availableAgents": [
+				"designer",
+				"developer",
+				"explorer",
+				"reviewer",
+				"simplifier"
+			],
+			"trustedAgents": [
+				"designer",
+				"developer",
+				"explorer",
+				"reviewer",
+				"simplifier"
+			]
+		}
+	},
 	"resources": [
 		"file:///Users/peanu/.kiro/steering/*.md",
 		"file:///Users/peanu/.kiro/skills/*/SKILL.md",
