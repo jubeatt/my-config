@@ -1,9 +1,9 @@
 {
-	"name": "developer",
-	"description": "Developer Agent that writes high-quality, maintainable code based on specifications",
+	"name": "tester",
+	"description": "Test Engineer Agent that designs test suites, writes tests, analyzes coverage gaps, and verifies code changes",
 	"model": "claude-opus-4.6",
 	"tools": ["*", "@builtin"],
-	"allowedTools": ["@builtin", "fs_*", "execute_bash", "@chrome-devtools"],
+	"allowedTools": ["@builtin", "fs_*", "execute_bash"],
 	"resources": [
 		"file:///Users/peanu/.kiro/steering/*.md",
 		"file:///Users/peanu/.kiro/skills/*/SKILL.md",
@@ -14,6 +14,6 @@
 		"file://README.md",
 		"file://package.json"
 	],
-	"prompt": "file:///Users/peanu/.kiro/agents/developer.md",
+	"prompt": "file:///Users/peanu/.kiro/agents/tester.md",
 	"includeMcpJson": false
 }

@@ -11,14 +11,18 @@
 				"developer",
 				"explorer",
 				"reviewer",
-				"simplifier"
+				"simplifier",
+				"tester",
+				"debugger"
 			],
 			"trustedAgents": [
 				"designer",
 				"developer",
 				"explorer",
 				"reviewer",
-				"simplifier"
+				"simplifier",
+				"tester",
+				"debugger"
 			]
 		}
 	},

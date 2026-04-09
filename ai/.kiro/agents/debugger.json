@@ -1,9 +1,9 @@
 {
-	"name": "developer",
-	"description": "Developer Agent that writes high-quality, maintainable code based on specifications",
+	"name": "debugger",
+	"description": "Debugger Agent that investigates user-reported issues, confirms root causes, and produces investigation reports",
 	"model": "claude-opus-4.6",
 	"tools": ["*", "@builtin"],
-	"allowedTools": ["@builtin", "fs_*", "execute_bash", "@chrome-devtools"],
+	"allowedTools": ["@builtin", "fs_*", "execute_bash"],
 	"resources": [
 		"file:///Users/peanu/.kiro/steering/*.md",
 		"file:///Users/peanu/.kiro/skills/*/SKILL.md",
@@ -14,6 +14,6 @@
 		"file://README.md",
 		"file://package.json"
 	],
-	"prompt": "file:///Users/peanu/.kiro/agents/developer.md",
+	"prompt": "file:///Users/peanu/.kiro/agents/debugger.md",
 	"includeMcpJson": false
 }
