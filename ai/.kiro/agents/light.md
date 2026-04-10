@@ -1,16 +1,6 @@
 ---
 name: light
 description: General-purpose agent for answering questions, looking things up, and making small changes
-mcpServers:
-  context7:
-    type: stdio
-    command: npx
-    args:
-      - "-y"
-      - "@upstash/context7-mcp"
-  exa:
-    type: "remote"
-    url: "https://mcp.exa.ai/mcp"
 ---
 
 # LIGHT AGENT

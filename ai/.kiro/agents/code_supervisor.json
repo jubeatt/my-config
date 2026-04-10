@@ -2,7 +2,7 @@
 	"name": "code_supervisor",
 	"description": "Coding Supervisor Agent that plans and delegates tasks to specialized agents",
 	"model": "claude-opus-4.6",
-	"tools": ["*", "@builtin", "use_subagent"],
+	"tools": ["*"],
 	"allowedTools": ["@builtin", "fs_*", "execute_bash", "use_subagent"],
 	"toolsSettings": {
 		"subagent": {

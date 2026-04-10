@@ -2,7 +2,7 @@
 	"name": "debugger",
 	"description": "Debugger Agent that investigates user-reported issues, confirms root causes, and produces investigation reports",
 	"model": "claude-opus-4.6",
-	"tools": ["*", "@builtin"],
+	"tools": ["*"],
 	"allowedTools": ["@builtin", "fs_*", "execute_bash"],
 	"resources": [
 		"file:///Users/peanu/.kiro/steering/*.md",

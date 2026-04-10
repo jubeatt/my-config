@@ -1,16 +1,6 @@
 ---
 name: explorer
 description: Explorer Agent that investigates codebases, reads documentation, and researches library usage via Context7 and Exa
-mcpServers:
-  context7:
-    type: stdio
-    command: npx
-    args:
-      - "-y"
-      - "@upstash/context7-mcp"
-  exa:
-    type: "remote"
-    url: "https://mcp.exa.ai/mcp"
 ---
 
 # EXPLORER AGENT

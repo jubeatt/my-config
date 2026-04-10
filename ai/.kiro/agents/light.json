@@ -2,8 +2,17 @@
 	"name": "light",
 	"description": "General-purpose agent for answering questions, looking things up, and making small changes",
 	"model": "claude-opus-4.6",
-	"tools": ["@builtin", "*", "use_subagent"],
-	"allowedTools": ["@builtin", "fs_*", "execute_bash", "@context7", "@exa"],
+	"tools": ["*"],
+	"allowedTools": [
+		"@builtin",
+		"fs_*",
+		"use_subagent",
+		"execute_bash",
+		"@context7",
+		"@exa",
+		"@mcp-atlassian",
+		"@figma-developer-mcp"
+	],
 	"toolsSettings": {
 		"subagent": {
 			"availableAgents": [

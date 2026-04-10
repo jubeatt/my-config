@@ -2,7 +2,7 @@
 	"name": "reviewer",
 	"description": "Code Reviewer Agent that performs thorough code reviews and ensures quality standards",
 	"model": "claude-opus-4.6",
-	"tools": ["@builtin", "*"],
+	"tools": ["*"],
 	"allowedTools": ["@builtin", "fs_*", "execute_bash"],
 	"resources": [
 		"file:///Users/peanu/.kiro/steering/*.md",

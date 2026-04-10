@@ -1,14 +1,6 @@
 ---
 name: designer
 description: Designer Agent that reads Figma designs and extracts design specifications for implementation
-mcpServers:
-  figma-developer-mcp:
-    type: stdio
-    command: npx
-    args:
-      - "-y"
-      - "figma-developer-mcp"
-      - "--stdio"
 ---
 
 # DESIGNER AGENT

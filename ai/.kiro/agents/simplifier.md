@@ -1,14 +1,6 @@
 ---
 name: simplifier
 description: Code Simplifier Agent that refines code for clarity, consistency, and maintainability while preserving functionality
-mcpServers:
-  git:
-    type: stdio
-    command: uvx
-    args:
-      - "mcp-server-git"
-    env:
-      GIT_CONFIG_GLOBAL: "/dev/null"
 ---
 
 # CODE SIMPLIFIER AGENT
