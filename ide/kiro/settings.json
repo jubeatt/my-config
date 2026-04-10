@@ -43,6 +43,9 @@
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
   // extensions
   "liveServer.settings.donotShowInfoMsg": true,
   "diffEditor.ignoreTrimWhitespace": true,
@@ -79,7 +82,7 @@
     }
   ],
   "gitlens.rebaseEditor.openOnPausedRebase": false,
-  // kiro ONLY
+  // kiro
   "kiroAgent.enableTabAutocomplete": false,
   "kiroAgent.agentAutonomy": "Autopilot",
   "kiroAgent.modelSelection": "claude-opus-4.6",
@@ -95,13 +98,11 @@
     "python3 *",
     "cp *",
     "cat *",
-    "ls *"
+    "ls *",
+    "which biome *"
   ],
   "kiroAgent.trustedTools": [
     "webFetch",
-    "remote_web_search"
-  ],
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-  }
+    "remote_web_search",
+  ]
 }
