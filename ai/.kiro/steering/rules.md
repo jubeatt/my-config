@@ -17,7 +17,7 @@ inclusion: always
 - **ALWAYS** read existing code and related files before making changes
 - If the project has test or lint commands, **ALWAYS** run them before finishing to ensure nothing is broken and standards are met
 - Prefer non-interactive commands (e.g., `git --no-pager diff`)
-- **ALWAYS** format files after modifying them — use the project's own formatter if configured, otherwise run `biome format --write <file>`
+- **ALWAYS** format files after modifying them — use the project's own formatter if configured, otherwise run `biome format --write <file>` (Biome is globally installed — use it directly, **DO NOT** use `npx`, `pnpx`, or any package runner)
 
 # Code Style
 
