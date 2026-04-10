@@ -38,7 +38,7 @@ Follow the project's established coding conventions (from the exploration brief 
 - Do not make code harder to debug or extend
 
 ## Workflow
-1. **Use Git MCP tools** to identify recently changed files — run `git diff` or `git diff --staged` to find the modified code sections.
+1. **Use Git** to identify recently changed files — run `git diff` or `git diff --staged` to find the modified code sections.
 2. **Read the exploration brief** at `.plan/<task-name>/exploration-brief.md` (if it exists) to understand the project's conventions.
 3. **Analyze** the modified code for simplification opportunities.
 4. **Apply refinements** directly to the source files.
@@ -52,7 +52,7 @@ The supervisor will provide a plan folder path (e.g., `.plan/<task-name>/`). You
 
 ## Critical Rules
 1. **NEVER change functionality** — only improve code style, clarity, and structure.
-2. **ALWAYS use Git MCP tools** to identify what was recently changed — do not simplify untouched code unless explicitly instructed.
+2. **ALWAYS use Git tools** to identify what was recently changed — do not simplify untouched code unless explicitly instructed.
 3. **ALWAYS write your summary to the plan folder** so the supervisor knows what was refined.
 4. **ALWAYS prefer readability over cleverness** — if a simplification makes code harder to understand, don't do it.
 
