@@ -1,14 +1,15 @@
 # my config
 
-存一些和開發相關的 config（VSCode / Kiro）。
+存一些和開發相關的 config（VSCode / Kiro / Vim）。
 
 ## 建立 Symbolic Link
 
-把 repo 裡的 `settings.json` 和 `keybindings.json` 透過 symbolic link 指向 IDE
+把 repo 裡的設定檔透過 symbolic link 指向對應位置。
 
 ```bash
-node scripts/link-ide-configs.js --vscode
-node scripts/link-ide-configs.js --kiro
+node scripts/link-configs.js --vscode
+node scripts/link-configs.js --kiro
+node scripts/link-configs.js --vim
 ```
 
 > 不帶參數時會互動式提示選擇。
