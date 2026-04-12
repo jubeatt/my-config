@@ -1,4 +1,5 @@
 {
+  "breadcrumbs.symbolPath": "off",
   "workbench.panel.defaultLocation": "bottom",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorCustomizations": {

@@ -1,4 +1,5 @@
 {
+  "breadcrumbs.symbolPath": "off",
   "workbench.panel.defaultLocation": "bottom",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorCustomizations": {
@@ -44,6 +45,9 @@
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   // extensions
@@ -103,6 +107,6 @@
   ],
   "kiroAgent.trustedTools": [
     "webFetch",
-    "remote_web_search",
+    "remote_web_search"
   ]
 }
