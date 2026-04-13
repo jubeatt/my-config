@@ -58,5 +58,15 @@
     "key": "ctrl+shift+right",
     "command": "-editor.action.smartSelect.expand",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+cmd+r",
+    "command": "workbench.action.positionPanelRight",
+    "when": "panelPosition == 'bottom'"
+  },
+  {
+    "key": "ctrl+cmd+r",
+    "command": "workbench.action.positionPanelBottom",
+    "when": "panelPosition == 'right'"
   }
 ]
