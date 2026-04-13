@@ -1,26 +1,21 @@
 {
-	"name": "simplifier",
-	"description": "Code Simplifier Agent that refines code for clarity, consistency, and maintainability while preserving functionality",
-	"model": "claude-opus-4.6",
-	"tools": ["*"],
-	"allowedTools": ["@builtin", "fs_*", "execute_bash"],
-	"resources": [
-		"file:///Users/peanu/.kiro/steering/*.md",
-		"file:///Users/peanu/.kiro/skills/*/SKILL.md",
-
-		"file://.kiro/steering/*.md",
-		"skill://.kiro/skills/*/SKILL.md"
-	],
-	"mcpServers": {
-		"git": {
-			"type": "stdio",
-			"command": "uvx",
-			"args": ["mcp-server-git"],
-			"env": {
-				"GIT_CONFIG_GLOBAL": "/dev/null"
-			}
-		}
-	},
-	"prompt": "file:///Users/peanu/.kiro/agents/simplifier.md",
-	"includeMcpJson": false
+  "name": "simplifier",
+  "description": "Code Simplifier Agent that refines code for clarity, consistency, and maintainability while preserving functionality",
+  "model": "claude-opus-4.6",
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "@builtin",
+    "fs_*",
+    "execute_bash"
+  ],
+  "resources": [
+    "file:///Users/peanu/.kiro/steering/*.md",
+    "file:///Users/peanu/.kiro/skills/*/SKILL.md",
+    "file://.kiro/steering/*.md",
+    "skill://.kiro/skills/*/SKILL.md"
+  ],
+  "prompt": "file:///Users/peanu/.kiro/agents/simplifier.md",
+  "includeMcpJson": false
 }
