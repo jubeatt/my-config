@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // Create symlinks from config files in this repo to their expected locations.
-// Usage: node scripts/link-configs.js [--vscode] [--kiro] [--vim]
+// Usage: node scripts/link-configs.js [--vscode] [--kiro] [--kiro-cli] [--vim]
 
 import { lstatSync, readdirSync, symlinkSync, unlinkSync } from "node:fs";
 import { dirname, resolve } from "node:path";
@@ -12,6 +12,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const home = process.env.HOME;
 
 const IDE_LINK_FILES = ["settings.json", "keybindings.json"];
+const KIRO_CLI_DIRS = ["agents", "skills", "steering", "hooks"];
 
 const EDITORS = {
 	vscode: {
@@ -32,18 +33,25 @@ const EDITORS = {
 		target: home,
 		files: [".vimrc"],
 	},
+	"kiro-cli": {
+		flag: "--kiro-cli",
+		source: resolve(__dirname, "../ai/.kiro"),
+		target: `${home}/.kiro`,
+		files: KIRO_CLI_DIRS,
+	},
 };
 
 async function promptEditor() {
 	const rl = createInterface({ input: process.stdin, output: process.stdout });
 	try {
 		const answer = await rl.question(
-			"Which editor? (1) vscode  (2) kiro  (3) vim: ",
+			"Which editor? (1) vscode  (2) kiro  (3) vim  (4) kiro-cli: ",
 		);
 		const choice = answer.trim();
 		if (choice === "1") return ["vscode"];
 		if (choice === "2") return ["kiro"];
 		if (choice === "3") return ["vim"];
+		if (choice === "4") return ["kiro-cli"];
 		console.error("Invalid choice.");
 		process.exit(1);
 	} finally {

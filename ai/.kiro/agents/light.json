@@ -35,6 +35,14 @@
 			]
 		}
 	},
+	"hooks": {
+		"postToolUse": [
+			{
+				"matcher": "fs_write",
+				"command": "~/.kiro/hooks/post-write-format.sh"
+			}
+		]
+	},
 	"resources": [
 		"file:///Users/peanu/.kiro/steering/*.md",
 		"file:///Users/peanu/.kiro/skills/*/SKILL.md",
