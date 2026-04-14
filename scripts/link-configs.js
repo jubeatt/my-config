@@ -33,6 +33,12 @@ const EDITORS = {
 		target: home,
 		files: [".vimrc"],
 	},
+	git: {
+		flag: "--git",
+		source: resolve(__dirname, ".."),
+		target: home,
+		files: [".gitconfig"],
+	},
 	"kiro-cli": {
 		flag: "--kiro-cli",
 		source: resolve(__dirname, "../ai/.kiro"),
@@ -45,13 +51,14 @@ async function promptEditor() {
 	const rl = createInterface({ input: process.stdin, output: process.stdout });
 	try {
 		const answer = await rl.question(
-			"Which editor? (1) vscode  (2) kiro  (3) vim  (4) kiro-cli: ",
+			"Which editor? (1) vscode  (2) kiro  (3) vim  (4) git  (5) kiro-cli: ",
 		);
 		const choice = answer.trim();
 		if (choice === "1") return ["vscode"];
 		if (choice === "2") return ["kiro"];
 		if (choice === "3") return ["vim"];
-		if (choice === "4") return ["kiro-cli"];
+		if (choice === "4") return ["git"];
+		if (choice === "5") return ["kiro-cli"];
 		console.error("Invalid choice.");
 		process.exit(1);
 	} finally {

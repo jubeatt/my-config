@@ -1,0 +1,23 @@
+[user]
+	name = Peanu
+	email = peanu@hismax.onmicrosoft.com
+
+[alias]
+  ck = checkout
+  cm = commit
+  br = branch
+  st = status
+  rs = restore
+  rss = restore --staged
+  cp = cherry-pick
+	cl = clean -fd
+  lg = log --oneline --graph
+  wk = worktree
+
+[core]
+	autocrlf = input
+	fileMode = true
+  ignoreCase = true
+
+[submodule]
+	recurse = true

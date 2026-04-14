@@ -103,7 +103,7 @@
     "cp *",
     "cat *",
     "ls *",
-    "which biome *"
+    "biome *"
   ],
   "kiroAgent.trustedTools": [
     "webFetch",

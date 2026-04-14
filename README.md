@@ -10,6 +10,7 @@
 node scripts/link-configs.js --vscode
 node scripts/link-configs.js --kiro
 node scripts/link-configs.js --vim
+# etc
 ```
 
 > 不帶參數時會互動式提示選擇。
