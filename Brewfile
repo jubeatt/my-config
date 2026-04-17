@@ -1,0 +1,7 @@
+brew "biome"
+brew "gh"
+brew "git"
+brew "glow"
+brew "neovim"
+brew "tree"
+brew "uv"
