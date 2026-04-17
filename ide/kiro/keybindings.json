@@ -145,5 +145,25 @@
     "key": "ctrl+cmd+r",
     "command": "workbench.action.positionPanelBottom",
     "when": "panelPosition == 'right'"
+  },
+  {
+    "key": "shift+cmd+space",
+    "command": "kiroAgent.focusContinueInput",
+    "when": "!kiroAgent.experiments.acpChat"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "-kiroAgent.focusContinueInput",
+    "when": "!kiroAgent.experiments.acpChat"
+  },
+  {
+    "key": "shift+cmd+space",
+    "command": "kiroAgent.focusChatInput",
+    "when": "kiroAgent.experiments.acpChat"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "-kiroAgent.focusChatInput",
+    "when": "kiroAgent.experiments.acpChat"
   }
 ]
