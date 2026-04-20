@@ -1,7 +1,7 @@
 {
-  "name": "simplifier",
-  "description": "Code Simplifier Agent that refines code for clarity, consistency, and maintainability while preserving functionality",
-  "model": "claude-opus-4.6",
+  "name": "councillor-b",
+  "description": "Council advisor (GLM-5). Read-only codebase analysis for multi-model consensus.",
+  "model": "glm-5",
   "tools": ["*"],
   "allowedTools": ["@builtin", "fs_*", "execute_bash"],
   "resources": [
@@ -11,6 +11,6 @@
     "file://.kiro/steering/*.md",
     "skill://.kiro/skills/*/SKILL.md"
   ],
-  "prompt": "file:///Users/peanu/.kiro/agents/simplifier.md",
+  "prompt": "file:///Users/peanu/.kiro/agents/councillor-b.md",
   "includeMcpJson": false
 }

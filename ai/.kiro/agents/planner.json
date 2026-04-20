@@ -1,6 +1,6 @@
 {
-  "name": "simplifier",
-  "description": "Code Simplifier Agent that refines code for clarity, consistency, and maintainability while preserving functionality",
+  "name": "planner",
+  "description": "Planner Agent that analyzes context and produces structured execution plans",
   "model": "claude-opus-4.6",
   "tools": ["*"],
   "allowedTools": ["@builtin", "fs_*", "execute_bash"],
@@ -11,6 +11,6 @@
     "file://.kiro/steering/*.md",
     "skill://.kiro/skills/*/SKILL.md"
   ],
-  "prompt": "file:///Users/peanu/.kiro/agents/simplifier.md",
+  "prompt": "file:///Users/peanu/.kiro/agents/planner.md",
   "includeMcpJson": false
 }

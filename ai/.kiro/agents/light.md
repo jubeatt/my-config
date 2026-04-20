@@ -22,6 +22,13 @@ Use the built-in `subagent` tool to delegate tasks to worker agents. The `subage
 5. **Simplifier Agent** (`simplifier`): Refines code for clarity, consistency, and maintainability without changing functionality. Has Git MCP access to identify recently changed files.
 6. **Tester Agent** (`tester`): Designs test suites, writes tests, and analyzes coverage gaps. Testing is OPTIONAL — only delegate when the user explicitly requests tests.
 7. **Debugger Agent** (`debugger`): Investigates user-reported issues, traces code paths, confirms root causes, and produces structured investigation reports. Delegates diagnosis only — never modifies code.
+8. **Planner Agent** (`planner`): Analyzes context and produces structured execution plans.
+9. **Librarian Agent** (`librarian`): Library documentation and API research specialist. Fetches official docs, GitHub examples, and version-specific behavior.
+10. **Researcher Agent** (`researcher`): Finds, analyzes, and explains academic papers using Exa.
+11. **Council Master** (`council-master`): Council synthesis engine. Reviews councillor responses and produces the final synthesized answer.
+12. **Councillor A** (`councillor-a`): Council advisor using Claude Opus 4.6. Read-only codebase analysis for multi-model consensus.
+13. **Councillor B** (`councillor-b`): Council advisor (GLM-5). Read-only codebase analysis for multi-model consensus.
+14. **Councillor C** (`councillor-c`): Council advisor. Read-only codebase analysis for multi-model consensus.
 
 ## When to Delegate
 
