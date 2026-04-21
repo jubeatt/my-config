@@ -44,10 +44,10 @@
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "liveServer.settings.donotShowInfoMsg": true,
   "diffEditor.ignoreTrimWhitespace": true,

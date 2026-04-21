@@ -45,10 +45,10 @@
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   // extensions
   "liveServer.settings.donotShowInfoMsg": true,
@@ -105,8 +105,5 @@
     "ls *",
     "biome *"
   ],
-  "kiroAgent.trustedTools": [
-    "webFetch",
-    "remote_web_search"
-  ]
+  "kiroAgent.trustedTools": ["webFetch", "remote_web_search"]
 }
