@@ -41,6 +41,12 @@
     }
   },
   "hooks": {
+    "stop": [
+      {
+        "command": "~/.kiro/hooks/cmux-notify.sh",
+        "description": "Notify via cmux when response completes"
+      }
+    ],
     "userPromptSubmit": [
       {
         "command": "~/.kiro/hooks/phase-reminder.sh"

@@ -50,6 +50,12 @@
     }
   },
   "hooks": {
+    "stop": [
+      {
+        "command": "~/.kiro/hooks/cmux-notify.sh",
+        "description": "Notify via cmux when response completes"
+      }
+    ],
     "postToolUse": [
       {
         "matcher": "fs_write",
