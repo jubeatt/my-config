@@ -1,4 +1,5 @@
 brew "biome"
+brew "fnm"
 brew "gh"
 brew "git"
 brew "glow"
