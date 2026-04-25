@@ -109,6 +109,8 @@ source $ZSH/oh-my-zsh.sh
 
 alias cpb="pbcopy < "
 alias pb="pbpaste > "
+alias rp="realpath"
+alias so="source ~/.zshrc"
 
 # fnm (Node.js version manager)
 eval "$(fnm env --use-on-cd)"
