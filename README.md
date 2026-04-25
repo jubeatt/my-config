@@ -55,6 +55,7 @@ bash scripts/setup-terminal.sh
 ### 3. 建立 Symlink
 
 ```bash
+node scripts/link-configs.js --all
 node scripts/link-configs.js --vscode
 node scripts/link-configs.js --kiro
 node scripts/link-configs.js --vim
@@ -65,7 +66,7 @@ node scripts/link-configs.js --ghostty
 node scripts/link-configs.js --cmux
 ```
 
-> 不帶參數時會互動式提示選擇。
+> 不帶參數時會互動式提示選擇。目標目錄不存在的設定會自動跳過。
 
 ### 4. 安裝 IDE Extensions
 
