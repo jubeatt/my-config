@@ -1,0 +1,20 @@
+gui:
+  language: "en"
+customCommands:
+  - key: "A"
+    command: git commit --amend {{.Form.V}} --no-edit
+    context: "files"
+    description: "Amend commit"
+    prompts:
+      - type: "menu"
+        title: "Need verify ?"
+        key: "V"
+        options:
+          - value: " "
+            name: "Verify"
+          - value: --no-verify
+            name: "Skip"
+  - key: "F"
+    context: remotes
+    command: "git fetch --prune origin --verbose"
+    description: "Fetch remote branches"

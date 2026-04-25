@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // Create symlinks from config files in this repo to their expected locations.
-// Usage: node scripts/link-configs.js [--all] [--vscode] [--kiro] [--kiro-cli] [--vim] [--zsh] [--ghostty] [--cmux]
+// Usage: node scripts/link-configs.js [--all] [--vscode] [--kiro] [--kiro-cli] [--vim] [--zsh] [--ghostty] [--cmux] [--lazygit]
 
 import {
   existsSync,
@@ -68,6 +68,12 @@ const CONFIGS = {
     source: resolve(__dirname, "../terminal/cmux"),
     target: `${home}/.config/cmux`,
     files: ["cmux.json"],
+  },
+  lazygit: {
+    flag: "--lazygit",
+    source: resolve(__dirname, "../terminal/lazygit"),
+    target: `${home}/Library/Application Support/lazygit`,
+    files: ["config.yml"],
   },
 }
 
