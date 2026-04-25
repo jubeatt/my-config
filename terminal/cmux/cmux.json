@@ -1,0 +1,39 @@
+{
+  "commands": [
+    {
+      "name": "Left 2 Right 1",
+      "keywords": ["layout", "split", "dev"],
+      "workspace": {
+        "name": "tab",
+        "cwd": "~",
+        "layout": {
+          "direction": "horizontal",
+          "split": 0.5,
+          "children": [
+            {
+              "direction": "vertical",
+              "split": 0.5,
+              "children": [
+                {
+                  "pane": {
+                    "surfaces": [{ "type": "terminal", "focus": true }]
+                  }
+                },
+                {
+                  "pane": {
+                    "surfaces": [{ "type": "terminal" }]
+                  }
+                }
+              ]
+            },
+            {
+              "pane": {
+                "surfaces": [{ "type": "terminal" }]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

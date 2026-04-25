@@ -18,7 +18,9 @@
 │   └── kiro/            # Kiro IDE settings, keybindings, extensions
 ├── terminal/
 │   ├── iterm2/          # iTerm2 設定（自動同步）
-│   └── oh-my-zsh/       # 自訂 zsh theme
+│   ├── oh-my-zsh/       # 自訂 zsh theme
+│   ├── ghostty/         # Ghostty 終端設定
+│   └── cmux/            # cmux 設定（layout commands）
 ├── scripts/
 │   ├── link-configs.js  # 建立 symlink
 │   ├── setup-terminal.sh        # 終端環境一鍵設定
@@ -59,6 +61,8 @@ node scripts/link-configs.js --vim
 node scripts/link-configs.js --git
 node scripts/link-configs.js --zsh
 node scripts/link-configs.js --kiro-cli
+node scripts/link-configs.js --ghostty
+node scripts/link-configs.js --cmux
 ```
 
 > 不帶參數時會互動式提示選擇。
@@ -96,6 +100,8 @@ node scripts/gen-vscode-extensions.js --vscode --dryrun
 | Zsh | `.zshrc` | `~/.zshrc` |
 | Zsh Theme | `terminal/oh-my-zsh/tonotdo.zsh-theme` | `~/.oh-my-zsh/custom/themes/` |
 | iTerm2 | `terminal/iterm2/` | iTerm2 Preferences → Custom Folder |
+| Ghostty | `terminal/ghostty/config` | `~/.config/ghostty/config` |
+| cmux | `terminal/cmux/cmux.json` | `~/.config/cmux/cmux.json` |
 
 ## 備註
 

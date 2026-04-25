@@ -51,13 +51,25 @@ const EDITORS = {
     target: `${home}/.kiro`,
     files: KIRO_CLI_DIRS,
   },
+  ghostty: {
+    flag: "--ghostty",
+    source: resolve(__dirname, "../terminal/ghostty"),
+    target: `${home}/.config/ghostty`,
+    files: ["config"],
+  },
+  cmux: {
+    flag: "--cmux",
+    source: resolve(__dirname, "../terminal/cmux"),
+    target: `${home}/.config/cmux`,
+    files: ["cmux.json"],
+  },
 }
 
 async function promptEditor() {
   const rl = createInterface({ input: process.stdin, output: process.stdout })
   try {
     const answer = await rl.question(
-      "Which editor? (1) vscode  (2) kiro  (3) vim  (4) git  (5) kiro-cli  (6) zsh: ",
+      "Which config? (1) vscode  (2) kiro  (3) vim  (4) git  (5) kiro-cli  (6) zsh  (7) ghostty  (8) cmux: ",
     )
     const choice = answer.trim()
     if (choice === "1") return ["vscode"]
@@ -66,6 +78,8 @@ async function promptEditor() {
     if (choice === "4") return ["git"]
     if (choice === "5") return ["kiro-cli"]
     if (choice === "6") return ["zsh"]
+    if (choice === "7") return ["ghostty"]
+    if (choice === "8") return ["cmux"]
     console.error("Invalid choice.")
     process.exit(1)
   } finally {
