@@ -111,6 +111,9 @@ alias cpb="pbcopy < "
 alias pb="pbpaste > "
 alias rp="realpath"
 alias so="source ~/.zshrc"
+alias kc="kiro-cli"
+alias lg="lazygit"
+alias bbd="brew bundle dump --force --no-vscode --file=Brewfile"
 
 # fnm (Node.js version manager)
 eval "$(fnm env --use-on-cd)"
