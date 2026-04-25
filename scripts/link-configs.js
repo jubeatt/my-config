@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // Create symlinks from config files in this repo to their expected locations.
-// Usage: node scripts/link-configs.js [--vscode] [--kiro] [--kiro-cli] [--vim]
+// Usage: node scripts/link-configs.js [--vscode] [--kiro] [--kiro-cli] [--vim] [--zsh]
 
 import { lstatSync, readdirSync, symlinkSync, unlinkSync } from "node:fs"
 import { dirname, resolve } from "node:path"
@@ -39,6 +39,12 @@ const EDITORS = {
     target: home,
     files: [".gitconfig"],
   },
+  zsh: {
+    flag: "--zsh",
+    source: resolve(__dirname, ".."),
+    target: home,
+    files: [".zshrc"],
+  },
   "kiro-cli": {
     flag: "--kiro-cli",
     source: resolve(__dirname, "../ai/.kiro"),
@@ -51,7 +57,7 @@ async function promptEditor() {
   const rl = createInterface({ input: process.stdin, output: process.stdout })
   try {
     const answer = await rl.question(
-      "Which editor? (1) vscode  (2) kiro  (3) vim  (4) git  (5) kiro-cli: ",
+      "Which editor? (1) vscode  (2) kiro  (3) vim  (4) git  (5) kiro-cli  (6) zsh: ",
     )
     const choice = answer.trim()
     if (choice === "1") return ["vscode"]
@@ -59,6 +65,7 @@ async function promptEditor() {
     if (choice === "3") return ["vim"]
     if (choice === "4") return ["git"]
     if (choice === "5") return ["kiro-cli"]
+    if (choice === "6") return ["zsh"]
     console.error("Invalid choice.")
     process.exit(1)
   } finally {
