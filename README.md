@@ -104,6 +104,18 @@ node scripts/gen-vscode-extensions.js --vscode --dryrun
 | Ghostty | `terminal/ghostty/config` | `~/.config/ghostty/config` |
 | cmux | `terminal/cmux/cmux.json` | `~/.config/cmux/cmux.json` |
 
+## Git Hooks
+
+專案使用 `hooks/` 目錄管理 git hooks，clone 後需設定一次：
+
+```bash
+git config core.hooksPath hooks
+```
+
+目前包含：
+
+- **pre-commit** — 自動對 staged 的 JS/TS/JSON 檔案執行 `biome format --write`
+
 ## 備註
 
 - iTerm2 設定透過內建的 Custom Folder 功能自動同步，不需要手動 symlink

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# Pre-commit hook: auto-format staged files with Biome
+
+# Get staged files that Biome can handle (js, ts, jsx, tsx, json, jsonc)
+STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|ts|jsx|tsx|json|jsonc)$')
+
+if [ -z "$STAGED" ]; then
+  exit 0
+fi
+
+# Format staged files in place
+echo "$STAGED" | xargs biome format --write 2>&1
+
+if [ $? -ne 0 ]; then
+  echo "\n✗ Biome format failed. Please fix errors and try again."
+  exit 1
+fi
+
+# Re-add formatted files
+echo "$STAGED" | xargs git add
