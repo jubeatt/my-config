@@ -31,6 +31,15 @@ else
   git clone https://github.com/zsh-users/zsh-autosuggestions "$ZSH_AUTOSUGGEST_DIR"
 fi
 
+# -- zsh-syntax-highlighting plugin --
+ZSH_SYNTAX_DIR="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting"
+if [ -d "$ZSH_SYNTAX_DIR" ]; then
+  echo "✓ zsh-syntax-highlighting already installed"
+else
+  echo "Installing zsh-syntax-highlighting..."
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting "$ZSH_SYNTAX_DIR"
+fi
+
 # -- iTerm2 custom folder --
 ITERM_PREFS_DIR="$REPO_DIR/terminal/iterm2"
 CURRENT=$(defaults read com.googlecode.iterm2 PrefsCustomFolder 2>/dev/null || echo "")
@@ -57,6 +66,7 @@ fi
 
 # -- .zshrc symlink --
 echo ""
+eval "$(fnm env)" 2>/dev/null || true
 node "$SCRIPT_DIR/link-configs.js" --zsh
 
 echo ""
