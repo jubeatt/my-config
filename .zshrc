@@ -126,3 +126,7 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+
+# lazygit project switcher
+alias pj='cd $(find ~/Projects -maxdepth 1 -type d | fzf)'
+alias lgp='pj && lazygit'

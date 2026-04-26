@@ -1,5 +1,12 @@
 gui:
   language: "en"
+  useHunkModeInStagingView: false
+  theme:
+    selectedLineBgColor:
+      - "#444444"
+os:
+  editPreset: 'vscode'
+  openDirInEditor: 'code {{dir}}'
 customCommands:
   - key: "A"
     command: git commit --amend {{.Form.V}} --no-edit
