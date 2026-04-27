@@ -68,5 +68,18 @@
     "key": "ctrl+cmd+r",
     "command": "workbench.action.positionPanelBottom",
     "when": "panelPosition == 'right'"
+  },
+  {
+    "key": "cmd+g",
+    "command": "-editor.action.nextMatchFindAction",
+    "when": "editorFocus"
+  },
+  {
+    "key": "cmd+g",
+    "command": "workbench.action.gotoLine"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "-workbench.action.gotoLine"
   }
 ]
