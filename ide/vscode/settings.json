@@ -12,6 +12,7 @@
   "workbench.colorTheme": "Winter is Coming (Dark Blue - No Italics)",
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.useModal": "off",
+  "workbench.editor.showTabs": "single",
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.suggest.enabled": false,
   "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', Monaco, 'Courier New', monospace",
@@ -36,6 +37,11 @@
   "explorer.autoRevealExclude": {
     "**/node_modules": false
   },
+  "zenMode.centerLayout": true,
+  "zenMode.fullScreen": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.showTabs": "single",
   "js/ts.preferences.useAliasesForRenames": false,
   "js/ts.updateImportsOnFileMove.enabled": "always",
   "js/ts.autoClosingTags.enabled": false,
