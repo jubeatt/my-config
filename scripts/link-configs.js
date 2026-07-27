@@ -5,9 +5,11 @@
 // Usage: node scripts/link-configs.js
 
 import {
+  chmodSync,
   existsSync,
   lstatSync,
   readdirSync,
+  statSync,
   symlinkSync,
   unlinkSync,
 } from "node:fs"
@@ -69,6 +71,7 @@ const CONFIGS = {
     source: resolve(__dirname, "../bin"),
     target: `${home}/.local/bin`,
     linkAll: true,
+    executable: true,
   },
 }
 
@@ -76,7 +79,7 @@ const CONFIG_NAMES = Object.keys(CONFIGS)
 
 // Returns: { linked: number, failed: number, skipped: boolean }
 function linkConfig(name) {
-  const { source, target, files, linkAll } = CONFIGS[name]
+  const { source, target, files, linkAll, executable } = CONFIGS[name]
   const result = { linked: 0, failed: 0, skipped: false }
 
   console.log(`\n[${name}]`)
@@ -105,6 +108,12 @@ function linkConfig(name) {
     }
 
     try {
+      // Ensure the source is executable so the symlink is runnable too
+      // (symlink permissions follow the target file).
+      if (executable) {
+        const mode = statSync(src).mode
+        chmodSync(src, mode | 0o111)
+      }
       symlinkSync(src, dest)
       console.log(`  ✓ ${file} -> ${src}`)
       result.linked++
