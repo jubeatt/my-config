@@ -1,0 +1,229 @@
+#!/usr/bin/env bash
+# av-refetch
+# Discard the local copy of an av-managed stack and re-adopt the latest version
+# from the remote, in one shot.
+#
+# Run while checked out on ANY branch of the stack you want to refresh. It reads
+# the stack from av's database to find the stack root (the trunk-parented
+# branch), the stack top (the leaf, i.e. `av next --last`), and the trunk name,
+# orphans the whole stack from av, detaches HEAD onto trunk's commit (so the
+# branches are free to delete, without fighting another worktree that has trunk
+# checked out), force-deletes every local branch whose name contains --keyword,
+# then re-adopts the stack from the remote starting at the stack top.
+#
+# Usage:
+#   av-refetch --keyword <substr> [--from <branch>] [--dryrun]
+#
+# Why a keyword instead of the branch prefix: a prefix (e.g. "feat/") is usually
+# too broad and would sweep up unrelated stacks, so the caller passes an exact
+# enough substring to scope the deletion themselves.
+set -euo pipefail
+
+DRYRUN=0
+KEYWORD=""
+FROM=""
+
+usage() {
+  cat <<'EOF'
+av-refetch — discard a local av stack and re-adopt the latest from the remote.
+
+Run while checked out on any branch of the stack you want to refresh.
+
+USAGE
+  av-refetch --keyword <substr> [--from <branch>] [--dryrun]
+
+FLAGS
+  --keyword <substr>   Substring; every local branch whose name contains it is
+                       force-deleted (git branch -D). Required.
+  --from <branch>      Branch to start the remote adoption from. Defaults to the
+                       stack top (the leaf branch, i.e. `av next --last`) of the
+                       current stack, read from av.db.
+  --dryrun             Only print the commands that would run; change nothing.
+  -h, --help           Show this help and exit.
+
+EXAMPLES
+  git checkout <any-branch-of-the-stack>
+  av-refetch --keyword feat/patient-360 --dryrun   # preview the full plan
+  av-refetch --keyword feat/patient-360            # do it
+
+WHAT IT DOES
+  1. Fetch the remote (prune stale refs).
+  2. Read av.db to find the stack root, the stack top, and the trunk name.
+  3. `av orphan` the whole stack (run from the stack root).
+  4. Detach HEAD onto trunk's commit hash (never conflicts with other worktrees).
+  5. Force-delete every local branch matching --keyword.
+  6. `av adopt --remote <top|--from>` to pull the fresh stack back down.
+
+REQUIREMENTS
+  git, jq, av; the repo must be av-initialized.
+EOF
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --keyword) KEYWORD="${2:-}"; shift ;;
+    --keyword=*) KEYWORD="${1#*=}" ;;
+    --from) FROM="${2:-}"; shift ;;
+    --from=*) FROM="${1#*=}" ;;
+    --dryrun) DRYRUN=1 ;;
+    -h|--help) usage; exit 0 ;;
+    *) echo "unknown arg: $1" >&2; usage; exit 1 ;;
+  esac
+  shift
+done
+
+[[ -n "$KEYWORD" ]] || { echo "error: --keyword is required" >&2; usage; exit 1; }
+
+# Check all dependencies up front and report the full picture at once.
+REQUIRED_DEPS=(av git jq)
+missing_deps=()
+for dep in "${REQUIRED_DEPS[@]}"; do
+  command -v "$dep" >/dev/null 2>&1 || missing_deps+=("$dep")
+done
+if [[ ${#missing_deps[@]} -gt 0 ]]; then
+  echo "error: missing required dependencies." >&2
+  echo "  required: ${REQUIRED_DEPS[*]}" >&2
+  echo "  missing:  ${missing_deps[*]}" >&2
+  exit 1
+fi
+
+if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  echo "error: not inside a git repository" >&2
+  exit 1
+fi
+
+run() { echo "+ $*"; if [[ $DRYRUN -eq 0 ]]; then "$@"; fi; }
+# Like run(), but tolerates failure (e.g. a branch that is already gone).
+run_soft() { echo "+ $*"; if [[ $DRYRUN -eq 0 ]]; then "$@" || true; fi; }
+
+GIT_DIR=$(git rev-parse --git-common-dir)
+DB="$GIT_DIR/av/av.db"
+[[ -f "$DB" ]] || { echo "error: av.db not found at $DB; repo not av-initialized?" >&2; exit 1; }
+
+# The anchor is where we start walking the parent chain: --from if given,
+# otherwise the currently checked-out branch.
+anchor="$FROM"
+if [[ -z "$anchor" ]]; then
+  anchor=$(git branch --show-current)
+  [[ -n "$anchor" ]] || {
+    echo "error: detached HEAD and no --from given; checkout a branch on the stack first" >&2
+    exit 1
+  }
+fi
+
+# Walk av.db UP from the anchor to the trunk-parented branch. That branch is the
+# stack root; its parent is the trunk. Used to orphan the stack and to pick a
+# commit to detach onto. Reading (not `av prev --first`) keeps this
+# side-effect-free so --dryrun changes nothing.
+root=""; trunk=""; b="$anchor"
+while :; do
+  jq -e --arg b "$b" '.branches[$b]' "$DB" >/dev/null 2>&1 \
+    || { echo "error: branch '$b' is not tracked by av" >&2; exit 1; }
+  if [[ "$(jq -r --arg b "$b" '.branches[$b].parent.trunk // false' "$DB")" == "true" ]]; then
+    root="$b"
+    trunk=$(jq -r --arg b "$b" '.branches[$b].parent.name' "$DB")
+    break
+  fi
+  b=$(jq -r --arg b "$b" '.branches[$b].parent.name' "$DB")
+done
+
+# Walk DOWN from the anchor following children to the stack top (the leaf with no
+# children) — the equivalent of `av next --last`. That leaf is the default branch
+# to re-adopt from. A fork (a branch with 2+ children) is ambiguous, so abort and
+# ask for --from rather than guess which tip to use. Skipped entirely when --from
+# is given, since the adoption target is already pinned.
+if [[ -n "$FROM" ]]; then
+  top="(overridden by --from)"
+  adopt_from="$FROM"
+else
+  top="$anchor"
+  while :; do
+    children=$(jq -r --arg p "$top" '[.branches[] | select(.parent.name == $p) | .name] | .[]' "$DB")
+    count=$(printf '%s' "$children" | grep -c . || true)
+    if [[ "$count" -eq 0 ]]; then
+      break
+    elif [[ "$count" -eq 1 ]]; then
+      top="$children"
+    else
+      echo "error: stack forks at '$top' — it has multiple children:" >&2
+      printf '   - %s\n' $children >&2
+      echo "pass --from <branch> to pick the top branch to adopt from explicitly." >&2
+      exit 1
+    fi
+  done
+  adopt_from="$top"
+fi
+
+# Local branches to delete: name contains the keyword, minus trunk (guard so a
+# stray keyword match can never nuke the trunk). Built with a read loop rather
+# than `mapfile` so it works on the bash 3.2 shipped with macOS.
+to_delete=()
+while IFS= read -r line; do
+  [[ -n "$line" ]] && to_delete+=("$line")
+done < <(
+  git branch --format='%(refname:short)' \
+    | grep -- "$KEYWORD" \
+    | grep -vx "$trunk" || true
+)
+
+echo "Trunk:        $trunk"
+echo "Stack root:   $root"
+echo "Stack top:    $top"
+echo "Adopt from:   $adopt_from"
+echo "Keyword:      $KEYWORD"
+if [[ ${#to_delete[@]} -eq 0 ]]; then
+  echo "Local branches matching keyword: (none)"
+else
+  echo "Local branches matching keyword (will be force-deleted):"
+  printf '   - %s\n' "${to_delete[@]}"
+fi
+[[ $DRYRUN -eq 1 ]] && echo "(dry-run)"
+echo
+
+# 1. refresh remote refs so the re-adopt below sees the latest stack.
+if [[ $DRYRUN -eq 0 ]]; then
+  run git fetch origin --prune
+else
+  echo "+ git fetch origin --prune  (skipped in dry-run)"
+fi
+echo
+
+# 2. orphan the whole stack. `av orphan` orphans the current branch and all its
+#    children, so running it from the stack root covers the entire stack.
+echo ">> Orphaning the stack from av"
+run git checkout "$root"
+run av orphan
+echo
+
+# 3. detach HEAD onto trunk's commit so every stack branch is free to delete.
+#    Detaching to a hash (not the branch) never conflicts with another worktree
+#    that already has trunk checked out.
+echo ">> Detaching HEAD off the stack"
+trunk_ref="$trunk"
+git rev-parse --verify --quiet "$trunk" >/dev/null 2>&1 || trunk_ref="origin/$trunk"
+if [[ $DRYRUN -eq 1 ]]; then
+  echo "+ git checkout --detach \$(git rev-parse $trunk_ref)"
+else
+  trunk_hash=$(git rev-parse --verify "$trunk_ref") \
+    || { echo "error: cannot resolve trunk ref '$trunk_ref'" >&2; exit 1; }
+  run git checkout --detach "$trunk_hash"
+fi
+echo
+
+# 4. force-delete the matching local branches.
+echo ">> Deleting local branches"
+for b in "${to_delete[@]}"; do
+  if git show-ref --verify --quiet "refs/heads/$b"; then
+    run_soft git branch -D "$b"
+  else
+    echo "   (local $b already gone)"
+  fi
+done
+echo
+
+# 5. re-adopt the fresh stack from the remote.
+echo ">> Re-adopting the stack from the remote"
+run av adopt --remote "$adopt_from"
+echo
+
+echo "Done."
