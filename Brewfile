@@ -35,6 +35,8 @@ brew "aviator-co/tap/av", trusted: true
 cask "claude-code"
 # Ghostty-based terminal with vertical tabs and notifications for AI coding agents
 cask "cmux"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
 # Window peeking utility app
 cask "dockdoor"
 cask "font-jetbrains-mono-nerd-font"
