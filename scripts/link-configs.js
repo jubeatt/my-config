@@ -27,11 +27,6 @@ const CONFIGS = {
     target: `${home}/Library/Application Support/Code/User`,
     files: IDE_LINK_FILES,
   },
-  codium: {
-    source: resolve(__dirname, "../ide/vscode"),
-    target: `${home}/Library/Application Support/VSCodium/User`,
-    files: IDE_LINK_FILES,
-  },
   kiro: {
     source: resolve(__dirname, "../ide/kiro"),
     target: `${home}/Library/Application Support/Kiro/User`,

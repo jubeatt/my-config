@@ -64,7 +64,6 @@ node scripts/link-configs.js
 
 ```bash
 node scripts/install-extensions.js --vscode
-node scripts/install-extensions.js --codium
 node scripts/install-extensions.js --kiro
 ```
 
@@ -76,29 +75,26 @@ node scripts/install-extensions.js --kiro
 
 ```bash
 node scripts/gen-vscode-extensions.js --vscode
-node scripts/gen-vscode-extensions.js --codium
 node scripts/gen-vscode-extensions.js --kiro
 
 # 預覽變更，不寫入檔案
 node scripts/gen-vscode-extensions.js --vscode --dryrun
-node scripts/gen-vscode-extensions.js --codium --dryrun
 ```
 
 ## Symlink 對照表
 
-| 設定 | Repo 位置 | 目標位置 |
-|------|----------|---------|
-| VS Code | `ide/vscode/` | `~/Library/Application Support/Code/User/` |
-| VSCodium | `ide/vscode/` | `~/Library/Application Support/VSCodium/User/` |
-| Kiro IDE | `ide/kiro/` | `~/Library/Application Support/Kiro/User/` |
-| Vim | `.vimrc` | `~/.vimrc` |
-| Git | `.gitconfig` | `~/.gitconfig` |
-| Zsh | `.zshrc` | `~/.zshrc` |
-| Zsh Theme | `terminal/oh-my-zsh/tonotdo.zsh-theme` | `~/.oh-my-zsh/custom/themes/` |
-| iTerm2 | `terminal/iterm2/` | iTerm2 Preferences → Custom Folder |
-| Ghostty | `terminal/ghostty/config` | `~/.config/ghostty/config` |
-| cmux | `terminal/cmux/cmux.json`, `settings.json` | `~/.config/cmux/` |
-| Lazygit | `terminal/lazygit/config.yml` | `~/Library/Application Support/lazygit/config.yml` |
+| 設定      | Repo 位置                                  | 目標位置                                           |
+| --------- | ------------------------------------------ | -------------------------------------------------- |
+| VS Code   | `ide/vscode/`                              | `~/Library/Application Support/Code/User/`         |
+| Kiro IDE  | `ide/kiro/`                                | `~/Library/Application Support/Kiro/User/`         |
+| Vim       | `.vimrc`                                   | `~/.vimrc`                                         |
+| Git       | `.gitconfig`                               | `~/.gitconfig`                                     |
+| Zsh       | `.zshrc`                                   | `~/.zshrc`                                         |
+| Zsh Theme | `terminal/oh-my-zsh/tonotdo.zsh-theme`     | `~/.oh-my-zsh/custom/themes/`                      |
+| iTerm2    | `terminal/iterm2/`                         | iTerm2 Preferences → Custom Folder                 |
+| Ghostty   | `terminal/ghostty/config`                  | `~/.config/ghostty/config`                         |
+| cmux      | `terminal/cmux/cmux.json`, `settings.json` | `~/.config/cmux/`                                  |
+| Lazygit   | `terminal/lazygit/config.yml`              | `~/Library/Application Support/lazygit/config.yml` |
 
 ## Git Hooks
 

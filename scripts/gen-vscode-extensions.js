@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // Sync installed extensions to ide/<editor>/extensions.json.
-// Usage: node scripts/gen-vscode-extensions.js [--vscode] [--codium] [--kiro] [--dryrun]
+// Usage: node scripts/gen-vscode-extensions.js [--vscode] [--kiro] [--dryrun]
 
 import { execSync } from "node:child_process"
 import { readFileSync, writeFileSync } from "node:fs"
@@ -13,11 +13,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const EDITORS = {
   vscode: { flag: "--vscode", cmd: "code --list-extensions", dir: "vscode" },
-  codium: {
-    flag: "--codium",
-    cmd: "codium --list-extensions",
-    dir: "vscode",
-  },
   kiro: { flag: "--kiro", cmd: "kiro --list-extensions", dir: "kiro" },
 }
 
@@ -37,13 +32,10 @@ function getInstalledExtensions(cmd) {
 async function promptEditor() {
   const rl = createInterface({ input: process.stdin, output: process.stdout })
   try {
-    const answer = await rl.question(
-      "Which editor? (1) vscode  (2) codium  (3) kiro: ",
-    )
+    const answer = await rl.question("Which editor? (1) vscode  (2) kiro: ")
     const choice = answer.trim()
     if (choice === "1") return ["vscode"]
-    if (choice === "2") return ["codium"]
-    if (choice === "3") return ["kiro"]
+    if (choice === "2") return ["kiro"]
     console.error("Invalid choice.")
     process.exit(1)
   } finally {

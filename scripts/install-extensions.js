@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // Install extensions from ide/<editor>/extensions.json.
-// Usage: node scripts/install-extensions.js [--vscode] [--codium] [--kiro]
+// Usage: node scripts/install-extensions.js [--vscode] [--kiro]
 
 import { execSync } from "node:child_process"
 import { readFileSync } from "node:fs"
@@ -17,11 +17,6 @@ const EDITORS = {
     cmd: "code --install-extension",
     dir: "vscode",
   },
-  codium: {
-    flag: "--codium",
-    cmd: "codium --install-extension",
-    dir: "vscode",
-  },
   kiro: { flag: "--kiro", cmd: "kiro --install-extension", dir: "kiro" },
 }
 
@@ -33,13 +28,10 @@ function extensionsPath(editor) {
 async function promptEditor() {
   const rl = createInterface({ input: process.stdin, output: process.stdout })
   try {
-    const answer = await rl.question(
-      "Which editor? (1) vscode  (2) codium  (3) kiro: ",
-    )
+    const answer = await rl.question("Which editor? (1) vscode  (2) kiro: ")
     const choice = answer.trim()
     if (choice === "1") return ["vscode"]
-    if (choice === "2") return ["codium"]
-    if (choice === "3") return ["kiro"]
+    if (choice === "2") return ["kiro"]
     console.error("Invalid choice.")
     process.exit(1)
   } finally {

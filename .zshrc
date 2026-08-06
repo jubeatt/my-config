@@ -122,7 +122,6 @@ alias so="source ~/.zshrc"
 alias kc="kiro-cli"
 alias lg="lazygit"
 alias bbd="brew bundle dump --force --no-vscode --file=Brewfile"
-alias vs="codium"
 alias co="code"
 alias pn="pnpm"
 

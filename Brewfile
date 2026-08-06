@@ -40,6 +40,4 @@ cask "codex"
 # Window peeking utility app
 cask "dockdoor"
 cask "font-jetbrains-mono-nerd-font"
-# Binary releases of VS Code without MS branding/telemetry/licensing
-cask "vscodium"
 npm "corepack"
