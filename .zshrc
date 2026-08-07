@@ -122,8 +122,9 @@ alias so="source ~/.zshrc"
 alias kc="kiro-cli"
 alias lg="lazygit"
 alias bbd="brew bundle dump --force --no-vscode --file=Brewfile"
-alias co="code"
+alias vs="code"
 alias pn="pnpm"
+alias co="codex"
 
 # lazygit project switcher
 alias pj='cd $(find ~/Projects -maxdepth 1 -type d | fzf)'
