@@ -6,7 +6,7 @@
 
 - macOS
 - [Homebrew](https://brew.sh)
-- Node.js（用於 IDE 相關 script）
+- fnm（由 Brewfile 安裝，Node.js 由 setup script 管理）
 
 ## 目錄結構
 

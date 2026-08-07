@@ -64,9 +64,18 @@ else
   echo "  ✓ tonotdo.zsh-theme -> $THEME_SRC"
 fi
 
+# -- Node.js via fnm --
+# Keep the active Node.js version under fnm; pnpm is installed separately by Homebrew.
+eval "$(fnm env --use-on-cd)"
+if ! fnm list 2>/dev/null | grep -q 'v'; then
+  echo "Installing Node.js LTS via fnm..."
+  fnm install --lts
+fi
+fnm default lts-latest >/dev/null 2>&1 || true
+eval "$(fnm env --use-on-cd)"
+
 # -- .zshrc symlink --
 echo ""
-eval "$(fnm env)" 2>/dev/null || true
 node "$SCRIPT_DIR/link-configs.js" --zsh
 
 echo ""
