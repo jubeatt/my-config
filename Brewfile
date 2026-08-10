@@ -18,8 +18,6 @@ brew "gh"
 brew "git"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
 # SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
 brew "openvpn"
 # CLI for Playwright: record/generate code, inspect selectors, take screenshots
@@ -46,3 +44,4 @@ cask "font-jetbrains-mono-nerd-font"
 cask "fork"
 # Open-source code editor
 cask "visual-studio-code"
+npm "corepack"
