@@ -4,16 +4,16 @@
   "workbench.sideBar.location": "left",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.colorCustomizations": {
-    "[Winter is Coming (Dark Blue - No Italics)]": {
-      "statusBar.background": "#1A1A1A",
-      "statusBar.noFolderBackground": "#212121",
-      "statusBar.debuggingBackground": "#263238"
-    }
+    "statusBar.background": "#1A1A1A",
+    "statusBar.noFolderBackground": "#212121",
+    "statusBar.debuggingBackground": "#263238"
   },
   "workbench.colorTheme": "Winter is Coming (Dark Blue - No Italics)",
   "workbench.editor.empty.hint": "hidden",
   "workbench.editor.useModal": "off",
   "workbench.editor.showTabs": "single",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.experimental.modernUI": true,
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.suggest.enabled": false,
   "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font', Monaco, 'Courier New', monospace",
@@ -110,6 +110,5 @@
   "playwright.env": {
     "E2E_API_ENDPOINT": "https://dev-be-his.southmax.com"
   },
-  "workbench.secondarySideBar.defaultVisibility": "hidden",
-  "workbench.experimental.modernUI": true
+  "cSpell.userWords": ["Worklist"]
 }
